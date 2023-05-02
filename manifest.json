@@ -22,16 +22,7 @@
             "platform": "wide"
         }
     ],
-    "shortcuts": [
-        {
-            "name": "Companies",
-            "url": "/#/companies/"
-        },
-        {
-            "name": "Skirmish",
-            "url": "/#/play/skirmish"
-        }
-    ],
+    "shortcuts": [],
     "icons": [
         {
             "src": "/static/icon/icon-144.png",
