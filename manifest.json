@@ -24,12 +24,12 @@
     ],
     "shortcuts": [
         {
-            "name": "/#/companies/",
-            "url": "Companies"
+            "name": "Companies",
+            "url": "/#/companies/"
         },
         {
-            "name": "/#/play/skirmish",
-            "url": "Skirmish"
+            "name": "Skirmish",
+            "url": "/#/play/skirmish"
         }
     ],
     "icons": [
