@@ -9,7 +9,7 @@
     "background_color": "#262d4f",
     "theme_color": "#262d4f",
     "prefer_related_applications": true,
-    "orientation": "natural",
+    "orientation": "landscape-primary",
     "categories": [
         "games"
     ],
