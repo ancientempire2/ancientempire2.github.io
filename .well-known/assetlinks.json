@@ -1,0 +1,6 @@
+[{
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target" : { "namespace": "android_app", "package_name": "com.statlex.ancientempirestrikeback",
+                     "sha256_cert_fingerprints": ["CE:92:3B:F9:F5:0E:D7:CD:75:7A:57:C1:44:1A:21:22:83:38:33:5E:1A:C7:57:E0:E4:5E:50:24:A3:E7:F9:04"] }
+      }
+]
