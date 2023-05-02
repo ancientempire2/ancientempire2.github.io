@@ -2,17 +2,14 @@
     "name": "Ancient Empire: Strike Back",
     "lang": "en-US",
     "display": "standalone",
-    "display_override": [
-        "standalone",
-        "fullscreen"
-    ],
+    "display_override": ["standalone"],
     "short_name": "Ancient Empire: Strike Back",
     "start_url": "/",
     "scope": "/",
     "background_color": "#262d4f",
     "theme_color": "#262d4f",
     "prefer_related_applications": true,
-    "orientation": "any",
+    "orientation": "natural",
     "categories": [
         "games"
     ],
