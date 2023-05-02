@@ -9,10 +9,8 @@
     "background_color": "#262d4f",
     "theme_color": "#262d4f",
     "prefer_related_applications": true,
-    "orientation": "natural",
-    "categories": [
-        "games"
-    ],
+    "orientation": "any",
+    "categories": ["games"],
     "related_applications": [],
     "dir": "ltr",
     "description": "\"Ancient Empire: Strike Back\" is a thrilling strategy game that lets you control King Galamar and his brother Valadorn as they fight to protect their kingdom from evil.",
