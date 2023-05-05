@@ -24744,7 +24744,7 @@ function sayHi() {
   `;
   */
   // log(hiString);
-  log('Build date:', "2023-05-05T12:40:29.350Z");
+  log('Build date:', "2023-05-05T12:54:55.462Z");
   log('Is production:', true);
   log('===================\n');
 }
@@ -43307,41 +43307,47 @@ function getSize(pointA, pointB) {
 function useGesture(config) {
   var childRef = config.childRef,
     wrapperRef = config.wrapperRef;
-  var childStartPoint = {
-    x: 0,
-    y: 0
-  };
-  var childMovePoint = {
-    x: 0,
-    y: 0
-  };
-  var firstTouchStartPoint = {
-    x: 0,
-    y: 0
-  };
-  var zoomTouchStartPoint = [{
-    x: 0,
-    y: 0
-  }, {
-    x: 0,
-    y: 0
-  }];
-  var childStartZoom = {
-    zoom: 1
-  };
-  var childMoveZoom = {
-    zoom: 1
-  };
-  var deltaMovePoint = {
-    x: 0,
-    y: 0
-  };
-  var mode = {
-    isZoom: false
-  };
+  var childStartPoint = (0,react.useMemo)(function () {
+    return {
+      x: 0,
+      y: 0
+    };
+  }, []);
+  var childMovePoint = (0,react.useMemo)(function () {
+    return {
+      x: 0,
+      y: 0
+    };
+  }, []);
+  var firstTouchStartPoint = (0,react.useMemo)(function () {
+    return {
+      x: 0,
+      y: 0
+    };
+  }, []);
+  var zoomTouchStartPoint = (0,react.useMemo)(function () {
+    return [{
+      x: 0,
+      y: 0
+    }, {
+      x: 0,
+      y: 0
+    }];
+  }, []);
+  var childStartZoom = (0,react.useMemo)(function () {
+    return {
+      zoom: 1
+    };
+  }, []);
+  var childMoveZoom = (0,react.useMemo)(function () {
+    return {
+      zoom: 1
+    };
+  }, []);
+  // eslint-disable-next-line sonarjs/cognitive-complexity
   (0,react.useEffect)(function () {
+    var wrapperNode = wrapperRef.current;
     function onTouchStart(evt) {
-      mode.isZoom = evt.touches.length > 1;
       var firstTouch = evt.touches.item(0);
       var secondTouch = evt.touches.item(1);
       if (firstTouch) {
@@ -43373,29 +43379,20 @@ function useGesture(config) {
         });
         var deltaZoom = lineAfter / lineBefore;
         childMoveZoom.zoom = childStartZoom.zoom * deltaZoom;
+        // eslint-disable-next-line max-len
         childRef.current.style.transform = "translate3d(".concat(childMovePoint.x, "px, ").concat(childMovePoint.y, "px, 0) scale(").concat(childMoveZoom.zoom, ")");
         return;
       }
-      if (evt.touches.length === 1) {
-        deltaMovePoint.x = firstTouchStartPoint.x - evt.touches[0].clientX;
-        deltaMovePoint.y = firstTouchStartPoint.y - evt.touches[0].clientY;
-        childMovePoint.x = childStartPoint.x - deltaMovePoint.x;
-        childMovePoint.y = childStartPoint.y - deltaMovePoint.y;
+      if (firstTouch && evt.touches.length === 1) {
+        var deltaX = firstTouchStartPoint.x - firstTouch.clientX;
+        var deltaY = firstTouchStartPoint.y - firstTouch.clientY;
+        childMovePoint.x = childStartPoint.x - deltaX;
+        childMovePoint.y = childStartPoint.y - deltaY;
+        // eslint-disable-next-line max-len
         childRef.current.style.transform = "translate3d(".concat(childMovePoint.x, "px, ").concat(childMovePoint.y, "px, 0) scale(").concat(childMoveZoom.zoom, ")");
-        return;
       }
-      // save last center
-      // save last max\min x\y
-      console.log('move');
-      console.log(evt.touches);
-      console.log('delta X', firstTouchStartPoint.x - evt.touches[0].clientX);
-      console.log('delta Y', firstTouchStartPoint.y - evt.touches[0].clientY);
     }
     function onTouchEnd(evt) {
-      mode.isZoom = evt.touches.length > 1;
-      // file last delta move and delta zoom
-      console.log('touchend');
-      console.log(evt.touches);
       var firstTouch = evt.touches.item(0);
       var secondTouch = evt.touches.item(1);
       if (firstTouch && secondTouch) {
@@ -43426,10 +43423,17 @@ function useGesture(config) {
         childStartPoint.y = childMovePoint.y;
       }
     }
-    wrapperRef.current.addEventListener('touchstart', onTouchStart, false);
-    wrapperRef.current.addEventListener('touchmove', onTouchMove, false);
-    wrapperRef.current.addEventListener('touchend', onTouchEnd, false);
-  }, [childMovePoint, mode, deltaMovePoint, firstTouchStartPoint, wrapperRef, childRef, childStartPoint, zoomTouchStartPoint]);
+    wrapperNode.addEventListener('touchstart', onTouchStart, false);
+    wrapperNode.addEventListener('touchmove', onTouchMove, false);
+    wrapperNode.addEventListener('touchend', onTouchEnd, false);
+    wrapperNode.addEventListener('touchcancel', onTouchEnd, false);
+    return function () {
+      wrapperNode.removeEventListener('touchstart', onTouchStart, false);
+      wrapperNode.removeEventListener('touchmove', onTouchMove, false);
+      wrapperNode.removeEventListener('touchend', onTouchEnd, false);
+      wrapperNode.removeEventListener('touchcancel', onTouchEnd, false);
+    };
+  }, [childMovePoint, firstTouchStartPoint, wrapperRef, childRef, childStartPoint, zoomTouchStartPoint, childMoveZoom, childStartZoom]);
   return {};
 }
 ;// CONCATENATED MODULE: ./www/page/client/client-game/client-game-view-container/client-game-view-container.scss
@@ -49904,7 +49908,7 @@ module.exports = JSON.parse('{"$schema":"http://json-schema.org/draft-07/schema#
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-/******/ 		__webpack_require__.h = function() { return "87752235d3e5660cb250"; }
+/******/ 		__webpack_require__.h = function() { return "62b7cfd03abadb3a0686"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
