@@ -24744,7 +24744,7 @@ function sayHi() {
   `;
   */
   // log(hiString);
-  log('Build date:', "2023-05-05T12:36:23.537Z");
+  log('Build date:', "2023-05-05T12:40:29.350Z");
   log('Is production:', true);
   log('===================\n');
 }
@@ -43372,7 +43372,7 @@ function useGesture(config) {
           y: secondTouch.clientY
         });
         var deltaZoom = lineAfter / lineBefore;
-        childMoveZoom.zoom = childStartZoom.zoom + deltaZoom;
+        childMoveZoom.zoom = childStartZoom.zoom * deltaZoom;
         childRef.current.style.transform = "translate3d(".concat(childMovePoint.x, "px, ").concat(childMovePoint.y, "px, 0) scale(").concat(childMoveZoom.zoom, ")");
         return;
       }
@@ -49904,7 +49904,7 @@ module.exports = JSON.parse('{"$schema":"http://json-schema.org/draft-07/schema#
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-/******/ 		__webpack_require__.h = function() { return "c976c1d4211dd92d740f"; }
+/******/ 		__webpack_require__.h = function() { return "87752235d3e5660cb250"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
